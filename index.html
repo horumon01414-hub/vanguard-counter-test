@@ -65,7 +65,6 @@ main{max-width:760px;margin:auto}.totals{display:grid;grid-template-columns:1fr 
  <div class="toolbar"><input id="search" type="search" placeholder="項目を検索"><button class="action gold" id="undo">↶ 取り消し</button></div>
  
  <div id="items"></div>
- <div class="bottom"><button class="action primary" id="newFight">⚔ 新しいファイト</button></div>
  <div class="history"><div class="history-head"><span>操作履歴</span><span id="historyCount" style="color:var(--gold)">0件</span></div><div class="history-list" id="history"></div></div>
  </div>
  <div id="decksPanel" class="panel-hidden"><div class="history"><div class="history-head"><span>自分のデッキ管理</span></div><label class="field"><span>使用するデッキ</span><select id="deckSelect" style="width:100%;background:#101010;border:1px solid var(--line);border-radius:9px;color:white;padding:11px;font:inherit"></select></label><div class="toolbar"><input id="deckName" type="text" placeholder="新しいデッキ名"><button class="action gold" id="addDeck">追加</button></div><div class="match-tools"><button class="action" id="renameDeck">名前を変更</button><button class="action" id="deleteDeck">デッキを削除</button></div>
@@ -86,7 +85,7 @@ main{max-width:760px;margin:auto}.totals{display:grid;grid-template-columns:1fr 
   <section class="persona-panel"><h3 class="persona-title">ペルソナライド</h3><div class="persona-buttons"><button type="button" class="persona-button" id="personaSelf">自分</button><button type="button" class="persona-button" id="personaOpponent">相手</button></div></section>
   <p class="note">各ユニットをタップすると、パワーとクリティカルの操作画面が開きます。</p>
   <section class="history" style="margin-top:14px"><div class="history-head"><span>設定</span></div><label class="setting-toggle"><input id="energyReminderSetting" type="checkbox"><span>自分のターン開始時にエネルギーチャージ通知を表示</span></label><p class="note" style="margin-bottom:0">オンにすると、自分のターンが始まる時だけ「エネルギーを3チャージ」と表示します。相手のターン開始時には表示しません。</p></section>
-  <div class="bottom" style="margin-top:18px"><button class="action" id="finish" style="width:100%">ファイト終了</button></div>
+  <div class="bottom" style="margin-top:18px"><button class="action" id="finish" style="width:100%;grid-column:1 / -1;min-height:64px;font-size:17px;font-weight:800">ファイト終了</button></div>
  </div>
  <div id="requestPanel" class="panel-hidden">
   <section class="history" style="margin:8px 0 12px"><div class="history-head"><span>要求値計算</span><span class="pill">5000単位</span></div>
@@ -139,7 +138,6 @@ function change(name,delta){const before=JSON.parse(JSON.stringify(state.counts)
 function undo(){const x=state.history.pop();if(!x)return;state.counts=x.before;state.player=x.player;save();render(true);toast("直前の操作を取り消しました")}
 $("myTab").onclick=()=>{state.player="自分";save();render()};$("opTab").onclick=()=>{state.player="相手";save();render()};$("undo").onclick=undo;$("search").oninput=render;
 
-$("newFight").onclick=()=>$("startFightDialog").classList.add("open");
 $("startFightControl").onclick=()=>$("startFightDialog").classList.add("open");
 $("cancelStartFight").onclick=()=>$("startFightDialog").classList.remove("open");
 function beginFight(userGoesFirst){if(state.fight.startedAt&&!confirm("新しいファイトを開始しますか？現在のカウントと進行状況はリセットされます（対戦記録は残ります）。"))return;state.counts={自分:fresh(),相手:fresh()};state.history=[];state.player="自分";state.status="ファイト中";state.fight={startedAt:Date.now(),firstPlayer:userGoesFirst?"自分":"相手",currentPlayer:userGoesFirst?"自分":"相手",turns:{自分:userGoesFirst?1:0,相手:userGoesFirst?0:1},deckName:(state.decks.find(d=>d.id===state.activeDeckId)||state.decks[0]).name};state.orderUsed={自分:false,相手:false};state.powerRowsResetOnStart=true;powerRows.forEach(r=>powerPositions.forEach(pos=>{const u=state.powerUnits[r.id+"-"+pos];if(u){u.power=0;u.crit=1;u.effect=false;u.effectMemo=""}}));state.personaRide={self:false,opponent:false};save();$("startFightDialog").classList.remove("open");render();renderPower();renderTurnStatus();toast("新しいファイトを開始しました");if(state.fight.currentPlayer==="自分"&&state.energyReminderEnabled)$("energyReminderDialog").classList.add("open")}
