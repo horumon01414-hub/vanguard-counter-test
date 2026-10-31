@@ -1,9 +1,8 @@
-Vanguard Fight Tool v24 テスト版
+Vanguard Fight Tool v25 TEST
 
-変更点:
-- パワー増減表の「相手後列」「相手前列」「自分前列」「自分後列」の見出しを非表示
-- 相手側・自分側の大きな枠の見出しを「相手フィールド」「自分フィールド」に変更
-- V/R表示、各3枠×4列の配置、パワー・クリティカル等の操作は維持
+GitHub Pages test repository upload package.
+Upload all files in this ZIP to the repository root (do not upload the ZIP itself).
 
-アップロード先: horumon01414-hub/vanguard-counter-test
-ZIPを展開し、中の6ファイルをアップロードしてください。
+Includes v24 base features plus: complete fight-end reset, quick trigger buttons (☆/引/治/前/超), deck-specific Over Trigger effect setting, and the five supplied trigger icons.
+
+Test repository: horumon01414-hub/vanguard-counter-test
