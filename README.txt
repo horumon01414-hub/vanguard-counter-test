@@ -7,3 +7,6 @@ Includes v28 base features plus: opponent Arcana active/unused management, trigg
 
 Test repository: horumon01414-hub/vanguard-counter-test
 Test URL: https://horumon01414-hub.github.io/vanguard-counter-test/
+
+
+v30: Trigger effect buttons are arranged in a balanced 3-column by 2-row grid.
