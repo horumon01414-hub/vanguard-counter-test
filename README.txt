@@ -1,12 +1,5 @@
-Vanguard Fight Tool v29 TEST
-
-GitHub Pages test repository upload package.
-Upload all extracted files in this ZIP to the repository root (do not upload the ZIP itself).
-
-Includes v28 base features plus: opponent Arcana active/unused management, trigger target tab label updates, separate Over Trigger Drive/Damage processing, card-specific Over Trigger effects, dedicated +1億!!! processing, and removal of the +100,000,000 preset from ordinary power adjustment.
-
-Test repository: horumon01414-hub/vanguard-counter-test
-Test URL: https://horumon01414-hub.github.io/vanguard-counter-test/
-
-
-v30: Trigger effect buttons are arranged in a balanced 3-column by 2-row grid.
+Vanguard Fight Tool v34 テスト版
+正式版 v33 を基に作成。テスト用リポジトリのみにアップロードしてください。
+画像・音声は端末の IndexedDB に保存され、GitHubには含まれません。
+超トリガー効果、設定タブ、ペルソナライド素材、トリガー音声、アルカナ画像の動作を実機で検証してください。
+音声はiOSの再生制限により再生されない場合があります。
